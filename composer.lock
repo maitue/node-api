@@ -5618,22 +5618,6 @@
             "time": "2022-06-27T17:10:44+00:00"
         },
         {
-<<<<<<< HEAD
-            "name": "symfony/routing",
-            "version": "v6.0.15",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/routing.git",
-                "reference": "3b7384fad32c6d0e1919b5bd18a69fbcfc383508"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/routing/zipball/3b7384fad32c6d0e1919b5bd18a69fbcfc383508",
-                "reference": "3b7384fad32c6d0e1919b5bd18a69fbcfc383508",
-                "shasum": ""
-            },
-            "require": {
-=======
             "name": "symfony/psr-http-message-bridge",
             "version": "v2.1.4",
             "source": {
@@ -5736,7 +5720,6 @@
                 "shasum": ""
             },
             "require": {
->>>>>>> 86afa7fdf4d91919e495c6902d9516bdec5bfe25
                 "php": ">=8.0.2"
             },
             "conflict": {
