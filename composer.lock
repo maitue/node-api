@@ -3895,22 +3895,7 @@
             "time": "2022-11-05T23:03:38+00:00"
         },
         {
-<<<<<<< HEAD
-            "name": "symfony/console",
-            "version": "v6.0.16",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/console.git",
-                "reference": "be294423f337dda97c810733138c0caec1bb0575"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/be294423f337dda97c810733138c0caec1bb0575",
-                "reference": "be294423f337dda97c810733138c0caec1bb0575",
-                "shasum": ""
-            },
-            "require": {
-=======
+
             "name": "stella-maris/clock",
             "version": "0.1.7",
             "source": {
@@ -3972,7 +3957,6 @@
                 "shasum": ""
             },
             "require": {
->>>>>>> 86afa7fdf4d91919e495c6902d9516bdec5bfe25
                 "php": ">=8.0.2",
                 "symfony/polyfill-mbstring": "~1.0",
                 "symfony/service-contracts": "^1.1|^2|^3",
