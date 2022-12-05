@@ -30,6 +30,7 @@ Route::group([
 
 Route::group([
     'middleware' => 'auth.jwt',
+    'prefix'=> 'user'
 ], function(){
     Route::post('/access-token',[UserController::class, 'create_access_token']);
 });
