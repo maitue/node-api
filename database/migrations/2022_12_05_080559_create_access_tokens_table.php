@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('access_tokens', function (Blueprint $table) {
             $table->id();
             $table->integer("user_id");
-            $table->string('access_token');
+            $table->string('access_token',500);
             $table->timestamps();
         });
     }
