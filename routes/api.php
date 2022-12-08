@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Unit\UnitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,4 +34,5 @@ Route::group([
     'prefix'=> 'user'
 ], function(){
     Route::post('/access-token',[UserController::class, 'create_access_token']);
+	Route::resource('/units',UnitController::class);
 });
