@@ -3,9 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\Unit\UnitController;
-
+use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\QuestionController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -33,6 +34,14 @@ Route::group([
     'middleware' => 'auth.jwt',
     'prefix'=> 'user'
 ], function(){
-    Route::post('/access-token',[UserController::class, 'create_access_token']);
-	Route::resource('/units',UnitController::class);
+	Route::resource('/units', UnitController::class);
+});
+
+Route::group([
+    'middleware' => 'auth.jwt',
+], function(){
+	Route::resource('/units', UnitController::class);
+	Route::resource('/user', UserController::class);
+    Route::resource('/questions',QuestionController::class);
+    Route::resource('/answers', AnswerController::class);
 });

@@ -1,25 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Unit;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Units\Units;
-use SebastianBergmann\CodeCoverage\Report\Xml\Unit;
+use App\Models\Answers\Answers;
 
-class UnitController extends Controller
+class AnswerController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-		$units = Units::paginate(10); 
-        return response()->json([
-			'units'=> $units
-		]);
+        //
     }
 
     /**
@@ -40,12 +35,7 @@ class UnitController extends Controller
      */
     public function store(Request $request)
     {
-        $unit = new Units();
-        $unit->name = $request->name;
-        $unit->save();
-        return response()->json([
-            'unit'=> $unit
-        ]);
+        //
     }
 
     /**
@@ -79,12 +69,7 @@ class UnitController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $unit = Units::findOrFail($id);
-        $unit->name = $request->name;
-        $unit->save();
-        return response()->json([
-            'unit'=> $unit
-        ]);
+        //
     }
 
     /**
@@ -95,10 +80,6 @@ class UnitController extends Controller
      */
     public function destroy($id)
     {
-        $unit = Units::findOrFail($id);
-        $unit->delete();
-        return response()->json([
-            'message'=> "Delete Success"
-        ]);
+        //
     }
 }

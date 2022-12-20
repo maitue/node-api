@@ -1,24 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\Unit;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Units\Units;
-use SebastianBergmann\CodeCoverage\Report\Xml\Unit;
+use App\Models\User;
 
-class UnitController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-		$units = Units::paginate(10); 
+		$users = User::paginate(10);
         return response()->json([
-			'units'=> $units
+			'users'=>$users
 		]);
     }
 
@@ -40,12 +39,15 @@ class UnitController extends Controller
      */
     public function store(Request $request)
     {
-        $unit = new Units();
-        $unit->name = $request->name;
-        $unit->save();
-        return response()->json([
-            'unit'=> $unit
-        ]);
+        $user = new User();
+		$user->username = $request->username;
+		$user->email = $request->email;
+		$user->password = bcrypt($request->password);
+		$user->save();
+		return response()->json([
+		    "message" => "create success",
+			"user" => $user
+		]);
     }
 
     /**
@@ -79,12 +81,18 @@ class UnitController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $unit = Units::findOrFail($id);
-        $unit->name = $request->name;
-        $unit->save();
-        return response()->json([
-            'unit'=> $unit
-        ]);
+        $user = User::findOrFail($id);
+		if(isset($request->username)) {
+			$user->username = $request->username;
+		}
+		if(isset($request->email)) {
+			$user->email = $request->email;
+		}
+		$user->save();
+		return response()->json([
+		"message"=> "update success",
+		"user"=> $user
+		]);
     }
 
     /**
@@ -95,10 +103,6 @@ class UnitController extends Controller
      */
     public function destroy($id)
     {
-        $unit = Units::findOrFail($id);
-        $unit->delete();
-        return response()->json([
-            'message'=> "Delete Success"
-        ]);
+        //
     }
 }
