@@ -18,7 +18,6 @@ return new class extends Migration
             $table->unsignedBigInteger('question_id');
             $table->foreign('question_id')->references('id')->on('questions');
             $table->string('answer_name');
-            $table->string('right_answer');
             $table->timestamps();
         });
     }

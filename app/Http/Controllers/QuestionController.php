@@ -14,7 +14,11 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
+        $questions = Questions::paginate(10);
+        return response()->json([
+            'question' => $questions
+        ]);
+
     }
 
     /**
@@ -35,7 +39,15 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $question = new Questions();
+        $question->unit_id = $request->unit_id;
+        $question->question_name = $request->question_name;
+        $question->save();
+        
+        return response()->json([
+            'question' => $question
+        ]);
+        
     }
 
     /**

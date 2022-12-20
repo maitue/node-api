@@ -14,7 +14,7 @@ class AnswerController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -35,7 +35,14 @@ class AnswerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $answer = new Answers();
+        $answer->question_id = $request->question_id;
+        $answer->answer_name = $request->answer_name;
+        $answer->save();
+        
+        return response()->json([
+            'answer'=>$answer
+        ]);
     }
 
     /**
