@@ -35,13 +35,13 @@ Route::group([
     'prefix'=> 'user'
 ], function(){
 	Route::resource('/units', UnitController::class);
+    Route::resource('/questions', QuestionController::class);
+    Route::resource('/answers', AnswerController::class);
 });
 
 Route::group([
     'middleware' => 'auth.jwt',
 ], function(){
-	Route::resource('/units', UnitController::class);
 	Route::resource('/user', UserController::class);
-    Route::resource('/questions',QuestionController::class);
-    Route::resource('/answers', AnswerController::class);
+   
 });

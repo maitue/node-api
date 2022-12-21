@@ -14,9 +14,9 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions = Questions::paginate(10);
+        $questions = Questions::get()->toArray();
         return response()->json([
-            'question' => $questions
+            'questions' => $questions
         ]);
 
     }
@@ -43,7 +43,6 @@ class QuestionController extends Controller
         $question->unit_id = $request->unit_id;
         $question->question_name = $request->question_name;
         $question->save();
-        
         return response()->json([
             'question' => $question
         ]);

@@ -16,9 +16,13 @@ class UnitController extends Controller
      */
     public function index(Request $request)
     {
-		$units = Units::paginate(10); 
+        if(!$request->page) {
+            $units = Units::get()->toArray();
+        } else {
+            $units = Units::paginate(10);
+        }
         return response()->json([
-			'units'=> $units
+			'units'=> $units,
 		]);
     }
 
