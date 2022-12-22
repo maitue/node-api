@@ -41,7 +41,8 @@ class QuestionController extends Controller
     {
         $question = new Questions();
         $question->unit_id = $request->unit_id;
-        $question->question_name = $request->question_name;
+        $question->question = $request->question;
+        $question->correct_answer = $request->correct_answer;
         $question->save();
         return response()->json([
             'question' => $question
