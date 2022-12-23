@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Answers\Answers;
+use App\Models\Questions\Questions;
 
 class AnswerController extends Controller
 {
@@ -14,7 +15,7 @@ class AnswerController extends Controller
      */
     public function index()
     {
-
+         
     }
 
     /**
@@ -35,14 +36,25 @@ class AnswerController extends Controller
      */
     public function store(Request $request)
     {
-        $answer = new Answers();
-        $answer->question_id = $request->question_id;
-        $answer->answer = $request->answer;
-        $answer->save();
+        $count =  Answers::where('question_id', $request->question_id)->count();
+        if($count <= 3) {
+            $answer = new Answers();
+            $answer->question_id = $request->question_id;
+            $answer->answer = $request->answer;
+            $answer->save();
+
+            return response()->json([
+                'answer' => $answer,
+                'question' => $count
+            ]);
+        } else {
+            return response()->json([
+                'message' => "qua so cau tra loi",
+                'count'=> $count
+            ]);
+        }
+             
         
-        return response()->json([
-            'answer'=>$answer
-        ]);
     }
 
     /**
