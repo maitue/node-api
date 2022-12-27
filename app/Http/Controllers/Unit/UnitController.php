@@ -71,7 +71,11 @@ class UnitController extends Controller
      */
     public function edit($id)
     {
-        //
+        $unit = Units::findOrFail($id);
+        return response()->json([
+            'unit' => $unit
+        ]);
+        
     }
 
     /**

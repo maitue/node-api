@@ -12,9 +12,13 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $questions = Questions::get()->toArray();
+        if($request->unit_id) {
+            $questions = Questions::where('unit_id', $request->unit_id)->with('answer')->get()->toArray();
+        } else {
+            $questions = Questions::get()->toArray();
+        }
         return response()->json([
             'questions' => $questions
         ]);

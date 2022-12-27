@@ -17,8 +17,8 @@ class Questions extends Model
         'correct_answer'
     ];
     
-    public function answers() {
-        return $this->hasMany(Answers::class);
+    public function answer() {
+        return $this->hasMany(Answers::class,'question_id', 'id');
     }
 
     public function units() {
